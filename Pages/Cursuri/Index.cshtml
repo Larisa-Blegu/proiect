@@ -1,0 +1,72 @@
+﻿@page
+@model proiect.Pages.Cursuri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    body {
+        background-color: AntiqueWhite;
+    }
+</style>
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Locatie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curs[0].Artist.ArtistName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Curs) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Artist.ArtistName)
+                </th>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
